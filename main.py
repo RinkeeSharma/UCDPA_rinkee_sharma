@@ -85,6 +85,8 @@ def house_pricing_analysis_of_a_country(path):
 
     kmeans = KMeans(n_clusters=4)
     kmeans.fit(data[0])
+    kmeans.cluster_centers_
+    kmeans.labels_
     f, (ax1, ax2) = plt.subplots(1, 2, sharey=True, figsize=(10, 6))
     ax1.set_title('K Means')
     ax1.scatter(data[0][:, 0], data[0][:, 1], c=kmeans.labels_, cmap='rainbow')
@@ -124,6 +126,7 @@ def global_warming_analysis(file_path):
     colors_cw = sns.color_palette('coolwarm', len(countries))
     sns.barplot(mean_temp_bar_graph, countries_bar_graph, palette=colors_cw[::-1])
     Text = ax.set(xlabel='Mean temperature', title='Mean land temperature in countries')
+
     glbl_temp = pd.read_csv(GLOBAL_TEMPERATURES_CSV)
     # Extract the year from a date
     years = np.unique(glbl_temp['dt'].apply(lambda x: x[:4]))
