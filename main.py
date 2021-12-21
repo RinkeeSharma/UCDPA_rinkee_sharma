@@ -145,7 +145,7 @@ def global_warming_analysis(file_path):
     data = [trace_0, trace_1, trace_2]
     layout = go.Layout(xaxis=dict(title='year'), yaxis=dict(title='Mean Temperature, °C'),
                        title='Mean land temperature in world', showlegend=False)
-    fig = go.Figure(data=data, layout=layout, file_path="world")
+    fig = go.Figure(data=data, layout=layout)
     py.plot(fig)
     continents = ['China', 'United States', 'Niger', 'Greenland', 'Australia', 'Italy']
     mean_temp_year_country = [[0] * len(years[70:]) for i in range(len(continents))]
@@ -166,7 +166,7 @@ def global_warming_analysis(file_path):
                    line=dict(color=colors[i]), ))
     layout = go.Layout(xaxis=dict(title='year'), yaxis=dict(title='Mean Temperature, °C'),
                        title='Mean land temperature on the continents', )
-    fig = go.Figure(data=traces, layout=layout, file_path="continents")
+    fig = go.Figure(data=traces, layout=layout)
     py.plot(fig)
 
 
