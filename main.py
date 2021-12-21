@@ -125,7 +125,7 @@ def global_warming_analysis(file_path):
     f, ax = plt.subplots(figsize=(4.5, 50))
     colors_cw = sns.color_palette('coolwarm', len(countries))
     sns.barplot(mean_temp_bar_graph, countries_bar_graph, palette=colors_cw[::-1])
-    Text = ax.set(xlabel='Mean temperature', title='Mean land temperature in countries')
+    ax.set(xlabel='Mean temperature', title='Mean land temperature in countries')
 
     glbl_temp = pd.read_csv(GLOBAL_TEMPERATURES_CSV)
     # Extract the year from a date
@@ -145,7 +145,7 @@ def global_warming_analysis(file_path):
     data = [trace_0, trace_1, trace_2]
     layout = go.Layout(xaxis=dict(title='year'), yaxis=dict(title='Mean Temperature, °C'),
                        title='Mean land temperature in world', showlegend=False)
-    fig = go.Figure(data=data, layout=layout)
+    fig = go.Figure(data=data, layout=layout, file_path="world")
     py.plot(fig)
     continents = ['China', 'United States', 'Niger', 'Greenland', 'Australia', 'Italy']
     mean_temp_year_country = [[0] * len(years[70:]) for i in range(len(continents))]
@@ -166,8 +166,9 @@ def global_warming_analysis(file_path):
                    line=dict(color=colors[i]), ))
     layout = go.Layout(xaxis=dict(title='year'), yaxis=dict(title='Mean Temperature, °C'),
                        title='Mean land temperature on the continents', )
-    fig = go.Figure(data=traces, layout=layout)
+    fig = go.Figure(data=traces, layout=layout, file_path="continents")
     py.plot(fig)
+
 
 
 if __name__ == "__main__":
@@ -180,5 +181,6 @@ if __name__ == "__main__":
     # printing and showing data description which is used for analysis further.
     # It will help in understanding the data better
     show_data(COUNTRY_WISE_TEMPERATURE_FILE_PATH)
+    show_data(GLOBAL_TEMPERATURES_CSV)
     # global warming analysis country wise
     global_warming_analysis(COUNTRY_WISE_TEMPERATURE_FILE_PATH)
